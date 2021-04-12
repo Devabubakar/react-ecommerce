@@ -1,6 +1,7 @@
 import React from 'react';
 import './FormInput.styles.scss';
 
+
 const Forminput = ({ label, handleChange, ...otherProps }) => {
   return (
     <div className='group'>
@@ -14,7 +15,9 @@ const Forminput = ({ label, handleChange, ...otherProps }) => {
           {label}
         </label>
       ) : null}
+      
     </div>
+    
   );
 };
 
