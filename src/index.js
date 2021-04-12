@@ -7,7 +7,7 @@ import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
   <React.StrictMode>
-    <BrowserRouter basename='https://sultan254.github.io/React-ecommerce/'>
+    <BrowserRouter basename='/React-ecommerce/'>
       <App />
     </BrowserRouter>
   </React.StrictMode>,
