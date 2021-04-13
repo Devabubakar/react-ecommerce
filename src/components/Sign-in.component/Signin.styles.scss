@@ -7,4 +7,34 @@
         margin: 10px 0;
     
     }
+    
+}
+.buttons{
+    display: flex;
+    justify-content: space-between;
+}
+
+@media only screen and (max-width:650px){
+    .sign-in{
+        display: flex;
+        position: absolute;
+        justify-content: center;
+        align-items: center;
+        width: 50vw;
+
+        &span {
+            width: 100vw;
+        }
+        & h1{
+            margin: 30px !important;
+            height: 20vh;
+        }
+      
+    }
+  
+    
+    .title{
+        margin: 0px !important;
+    }
+
 }

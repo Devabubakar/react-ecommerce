@@ -7,9 +7,11 @@
   
     .logo-container {
       height: 100%;
-      width: 70px;
+      width: 7px;
       padding: 25px;
     }
+  
+    
   
     .options {
       width: 50%;
@@ -20,7 +22,18 @@
   
       .option {
         padding: 10px 15px;
+        cursor: pointer;
+        
       }
+    }
+  }
+
+  @media only screen and (max-width:600px){
+    .option{
+      padding: 5px !important;
+    }
+    .options{
+      width: 100% !important;
     }
   }
   

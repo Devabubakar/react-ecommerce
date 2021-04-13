@@ -6,3 +6,13 @@ a{
     text-decoration: none;
     color: black;
 }
+
+*{
+    box-sizing: border-box;
+}
+
+@media only screen and (max-width:900px){
+    body{
+        padding: 0px 10px;
+    }
+}
