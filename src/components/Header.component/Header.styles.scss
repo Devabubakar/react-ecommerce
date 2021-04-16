@@ -28,12 +28,15 @@
     }
   }
 
-  @media only screen and (max-width:600px){
+  @media only screen and (max-width:900px){
     .option{
       padding: 5px !important;
     }
     .options{
       width: 100% !important;
+    }
+    .logo-container{
+      padding: 10px !important;
     }
   }
   

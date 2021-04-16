@@ -9,7 +9,7 @@ const Header = ({ currentUser }) => {
     <div className='header'>
       <div className='logo-container'>
         <Link to='/'>
-          <Logo /> <br/> 
+          <Logo  /> <br/> 
          
         </Link>
       </div>

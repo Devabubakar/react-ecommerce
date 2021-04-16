@@ -2,10 +2,10 @@ import React from 'react';
 import './FormInput.styles.scss';
 
 
-const Forminput = ({ label, handleChange, ...otherProps }) => {
+const Forminput = ({ label,  ...otherProps }) => {
   return (
     <div className='group'>
-      <input className='form-input' onChange={handleChange} {...otherProps} />
+      <input className='form-input' {...otherProps} />
       {label ? (
         <label
           className={`${
