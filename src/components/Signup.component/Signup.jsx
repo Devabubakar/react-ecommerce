@@ -18,18 +18,21 @@ export class Signup extends Component {
   }
   handleSubmit = async (e) => {
     e.preventDefault();
-    if (this.password !== this.passwordConfirm) {
+    if (this.state.password !== this.state.passwordConfirm) {
       alert('Password Do Not match');
       return;
+      
     }
-
     try {
+      
       const { user } = await auth.createUserWithEmailAndPassword(
-        this.email,
-        this.passwords
+        this.state.email,
+        this.state.password
       );
+      
+      const {displayName} = this.state
 
-      await createUserProfileDocument(user, this.displayName);
+      await createUserProfileDocument(user, {displayName});
       this.setState({
         displayName: '',
         email: '',
@@ -40,44 +43,47 @@ export class Signup extends Component {
       console.log(error);
     }
   };
-  handleValue = (e) => {
+  handleChange = (e) => {
     const { name, value } = e.target;
+   
 
     this.setState({ [name]: value });
   };
   render() {
     return (
       <div className='sign-up'>
-        <h1 className='title'>Don't have account?</h1>
-        <span>Sign Up with Us</span>
+        <h1 className='title'>DON'T HAVE AN ACCOUNT WITH US?</h1>
+        <span>NO PROBLEM ! JUST SIGN UP WITH US TODAY !!</span>
         <form action='' className='sign-up-form' onSubmit={this.handleSubmit}>
+        <FormInput
+            type='text'
+            name='displayName'
+            value={this.state.displayName}
+            handleChange={this.handleChange}
+            label='Display Name'
+          />
+
           <FormInput
             type='email'
             name='email'
             value={this.state.email}
-            onChange={()=> this.handleChange}
+            handleChange={this.handleChange}
             label='Email'
           />
+
           <FormInput
             type='password'
             name='password'
             value={this.state.password}
-            onChange={()=> this.handleChange}
+            handleChange={this.handleChange}
             label='Password'
           />
           <FormInput
-            type='passwordConfirm'
+            type='password'
             name='passwordConfirm'
             value={this.state.passwordConfirm}
-            onChange={()=> this.handleChange}
+            handleChange={this.handleChange}
             label='PasswordConfirm'
-          />
-          <FormInput
-            type='text'
-            name='Display Name'
-            value={this.state.displayName}
-            onChange={()=> this.handleChange}
-            label='Display Name'
           />
 
           <Button type='submit'>SignUp</Button>
