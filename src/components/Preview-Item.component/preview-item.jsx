@@ -2,8 +2,12 @@ import React from 'react';
 
 import './preview-item.styles.scss';
 import Button from '../Button.component/button';
+import { addItem } from '../../Redux/cartReducer/cartActions';
+import { connect } from 'react-redux';
 
-const PreviewItem = ({ imageUrl, name, price }) => {
+const PreviewItem = ({ item, addItem }) => {
+  const { imageUrl, name, price } = item;
+  
   return (
     <div className='collection-item'>
       <div
@@ -17,9 +21,15 @@ const PreviewItem = ({ imageUrl, name, price }) => {
         <span className='name'>{name}</span>
         <span className='price'>{price}</span>
       </div>
-      <Button inverted>Add to Cart</Button>
+      <Button onClick={() => addItem(item)} inverted>
+        Add to Cart
+      </Button>
     </div>
   );
 };
 
-export default PreviewItem;
+const mapDispatchToProps = (dispatch) => ({
+  addItem: (item) => dispatch(addItem(item)),
+});
+
+export default connect(null, mapDispatchToProps)(PreviewItem);
