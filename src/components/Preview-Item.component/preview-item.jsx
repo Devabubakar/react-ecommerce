@@ -1,6 +1,7 @@
 import React from 'react';
 
 import './preview-item.styles.scss';
+import Button from '../Button.component/button';
 
 const PreviewItem = ({ imageUrl, name, price }) => {
   return (
@@ -14,8 +15,9 @@ const PreviewItem = ({ imageUrl, name, price }) => {
 
       <div className='collection-footer'>
         <span className='name'>{name}</span>
-        <span className='prie'>{price}</span>
+        <span className='price'>{price}</span>
       </div>
+      <Button inverted>Add to Cart</Button>
     </div>
   );
 };
