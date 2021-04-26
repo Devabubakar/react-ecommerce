@@ -8,10 +8,12 @@ const Cart = ({toggleCart}) => {
   return (
     <div className='cart-icon' onClick={toggleCart}>
       <CartIcon className='shopping-icon' />
-      <span className='item-count'>1</span>
+  <span className='item-count'>{}</span>
     </div>
   );
 };
+
+
 
 const mapDispatchToProps = (dispatch) => ({
    toggleCart:() => dispatch(toggleCart())
