@@ -1,7 +1,6 @@
 {
   "name": "react-ecommerce",
   "version": "0.1.0",
-  "homepage": "https://sultan254.github.io/React-ecommerce/",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.11.10",
