@@ -10,6 +10,6 @@ export const collectionObject = createSelector([selectCollections], (collections
 
 export const categoryCollections = (categoryUrlParams) =>
   createSelector(
-    [collectionObject],
+    [selectCollections],
     (collections) => collections[categoryUrlParams]
   );
