@@ -3,10 +3,11 @@ import { connect } from 'react-redux';
 
 import { categoryCollections } from '../../Redux/shopReducer/shopSelector';
 import CollectionPreview from '../collections.component/CollectionsPreview'
+import './category.styles.scss'
 
 const Category = ({collection}) => {
   return(
-      <div>
+      <div className='collections-overview'>
           <CollectionPreview collection={collection}/>
           
       </div>
