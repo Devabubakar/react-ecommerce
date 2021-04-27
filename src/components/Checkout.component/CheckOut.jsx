@@ -8,6 +8,7 @@ import {
   cartPriceCount,
 } from '../../Redux/cartReducer/cart.selector';
 import CheckOutItem from '../Checkout-Item.componet/CheckOutItem';
+import StripeButton from '../stripe-button.component/stripeButton';
 
 const CheckOut = ({ cartItems, cartPrice }) => {
   return (
@@ -34,6 +35,12 @@ const CheckOut = ({ cartItems, cartPrice }) => {
       ))}
 
       <div className='total'>{cartPrice} $</div>
+      <div className="warning-message">
+          *FOR DEVELOPMENT PURPOSE ONLY : USE 
+          <br/>
+          CREDIT CARD : 4242 4242 4242 4242 -Exp: 01/23 -CVV :123
+      </div>
+      <StripeButton price ={cartPrice}/>
     </div>
   );
 };
