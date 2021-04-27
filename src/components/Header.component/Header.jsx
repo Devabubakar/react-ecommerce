@@ -15,7 +15,7 @@ const Header = ({ currentUser, hidden }) => {
     <div className='header'>
       <div className='logo-container'>
         <Link to='/'>
-          <Logo /> <br />
+          <Logo to='/' style={{cursor:'pointer'}} /> <br />
         </Link>
       </div>
 
