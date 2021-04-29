@@ -1,14 +1,16 @@
+
 import React from 'react';
-import './shop.overview.styles.scss'
+
 
 import { connect } from 'react-redux';
 import {createStructuredSelector} from 'reselect'
 import {collectionObject} from '../../redux/shop/shop.selectors'
 import CollectionItems from '../collections/collections.preview.component'
+import { CollectionPageContainer } from './shop.overview.styles';
 
 const ShopOverview = ({ collections}) => {
   return (
-    <div className='collections-overview'>
+    <CollectionPageContainer>
       {
         collections.map(collection => 
           <CollectionItems key={collection.id} collection={collection} />
@@ -16,7 +18,7 @@ const ShopOverview = ({ collections}) => {
 
           )
       }
-    </div>
+    </CollectionPageContainer>
   );
 };
 

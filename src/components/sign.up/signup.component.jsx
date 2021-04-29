@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
-import './signup.styles.scss';
+
 
 import FormInput from '../form.input/form.input.component';
 import { auth, createUserProfileDocument } from '../../firebase/firebase.utils';
 import Button from '../button/button.component';
+import { SignUpContainer, SignUpTitle } from './signup.styles';
 
 export class Signup extends Component {
   constructor() {
@@ -51,8 +52,8 @@ export class Signup extends Component {
   };
   render() {
     return (
-      <div className='sign-up'>
-        <h1 className='title'>DON'T HAVE AN ACCOUNT WITH US?</h1>
+      <SignUpContainer>
+        <SignUpTitle>DON'T HAVE AN ACCOUNT WITH US?</SignUpTitle>
         <span>NO PROBLEM ! JUST SIGN UP WITH US TODAY !!</span>
         <form action='' className='sign-up-form' onSubmit={this.handleSubmit}>
         <FormInput
@@ -88,45 +89,9 @@ export class Signup extends Component {
 
           <Button type='submit'>SignUp</Button>
         </form>
-      </div>
+      </SignUpContainer>
     );
   }
 }
 
 export default Signup;
-
-/* <FormInput
-type='email'
-name='email'
-value={this.email}
-onChange={this.handleValue}
-label='email'
-required
-/>
-
-<FormInput
-type='text'
-name='Display Name '
-value={this.displayName}
-handleChange={this.handleValue}
-label='Display Name'
-required
-/>
-
-<FormInput
-type='password'
-name='password'
-value={this.password}
-handleChange={this.handleValue}
-label='password'
-required
-/>
-
-<FormInput
-type='password'
-name='password Confirm'
-value={this.passwordConfirm}
-handleChange={this.handleValue}
-label='password Confirm'
-required
-/> */

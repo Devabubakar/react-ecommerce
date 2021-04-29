@@ -3,14 +3,15 @@ import { connect } from 'react-redux';
 
 import { categoryCollections } from '../../redux/shop/shop.selectors';
 import CollectionPreview from '../collections/collections.preview.component'
-import './category.styles.scss'
+import { Collectionoverview } from './category.styles';
+
 
 const Category = ({collection}) => {
   return(
-      <div className='collections-overview'>
+      <Collectionoverview>
           <CollectionPreview collection={collection}/>
           
-      </div>
+      </Collectionoverview>
   )
 };
 
