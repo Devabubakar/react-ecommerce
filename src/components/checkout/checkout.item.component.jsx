@@ -5,7 +5,7 @@ import {
   removeItem,
   addItem,
   removeCartItem,
-} from '../../redux/cart/cartActions';
+} from '../../redux/cart/cart.actions';
 
 const CheckOutItem = ({ cartItem, clearItem, addItem, removeItem }) => {
   const { imageUrl, name, quantity, price } = cartItem;

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './Signup.styles.scss';
+import './signup.styles.scss';
 
 import FormInput from '../form.input/form.input.component';
 import { auth, createUserProfileDocument } from '../../firebase/firebase.utils';

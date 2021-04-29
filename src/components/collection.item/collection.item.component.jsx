@@ -1,8 +1,8 @@
 import React from 'react';
 
-import './preview-item.styles.scss';
+import './collection.item.styles.scss';
 import Button from '../button/button.component';
-import { addItem } from '../../redux/cart/cartActions';
+import { addItem } from '../../redux/cart/cart.actions';
 import { connect } from 'react-redux';
 
 const PreviewItem = ({ item, addItem }) => {
