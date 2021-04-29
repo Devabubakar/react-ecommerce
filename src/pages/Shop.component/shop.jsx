@@ -2,8 +2,8 @@ import React from 'react';
 import { Route } from 'react-router-dom';
 
 
-import ShopOverview from '../../components/shopOverview.jsx/shopOverview';
-import Category from '../../components/category.component/category'
+import ShopOverview from '../../components/shop.overview/shop.overview.component';
+import Category from '../../components/category/category.component'
 
 
 

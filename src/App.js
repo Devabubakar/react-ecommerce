@@ -1,13 +1,13 @@
 import './App.css';
 import Homepage from './pages/homepage.component/homepage';
 import { Route, Switch, Redirect } from 'react-router-dom';
-import Shop from './pages/Shop.component/shop';
-import Header from './components/Header.component/Header';
-import Authentication from './components/Auth.component/Authentication';
+import Shop from './pages/shop.component/shop';
+import Header from './components/header/header.component';
+import Authentication from './components/signup.signin/signup.signin.component';
 import { createUserProfileDocument } from './firebase/firebase.utils';
 import { connect } from 'react-redux';
-import { setCurrentUser } from './Redux/UserReducer/userActions';
-import  CheckOut  from './components/Checkout.component/CheckOut';
+import { setCurrentUser } from './redux/user/user.actions';
+import CheckOut from './components/checkout.item/checkout.component';
 
 import React from 'react';
 import { auth } from './firebase/firebase.utils';
