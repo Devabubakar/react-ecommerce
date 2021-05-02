@@ -7,7 +7,7 @@ import {
   cartItemSelector,
   cartPriceCount,
 } from '../../redux/cart/cart.selector';
-import CheckOutItem from '../checkout/checkout.item.component';
+import CheckOutItem from '../checkout.item/checkout.item.component';
 import StripeButton from '../stripe.button/stripe.button';
 import { CheckoutHeader, CheckoutPage, CheckoutTotal, CheckoutWarning, HeaderBlock } from './checkout.styles';
 

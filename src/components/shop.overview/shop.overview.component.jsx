@@ -8,8 +8,12 @@ import {collectionObject} from '../../redux/shop/shop.selectors'
 import CollectionItems from '../collections/collections.preview.component'
 import { CollectionPageContainer } from './shop.overview.styles';
 
+
+
+
 const ShopOverview = ({ collections}) => {
   return (
+    
     <CollectionPageContainer>
       {
         collections.map(collection => 
@@ -25,5 +29,7 @@ const ShopOverview = ({ collections}) => {
 const mapStateToProps = createStructuredSelector({
     collections: collectionObject
 })
+
+
 
 export default connect(mapStateToProps)(ShopOverview);

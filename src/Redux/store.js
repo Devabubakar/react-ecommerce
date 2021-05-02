@@ -4,7 +4,7 @@ import rootReducer from './root-reducer';
 import {persistStore} from 'redux-persist'
 
 const middleware = []
-if(process.env.NODE_ENV === "development"){
+if(process.env.NODE_ENV === "production"){
     middleware.push(logger)
 }
 

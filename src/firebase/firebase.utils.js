@@ -28,7 +28,7 @@ export const createUserProfileDocument = async (userAuth, displayName) => {
   const snapshot = await userRef.get();
 
   if (!snapshot.exists) {
-    const {  email } = userAuth;
+    const { email } = userAuth;
     const createdAt = new Date();
 
     try {
@@ -44,4 +44,48 @@ export const createUserProfileDocument = async (userAuth, displayName) => {
 
   return userRef;
 };
+
+export const addCollectionAndDocument = async (collectionKey, ObjectsAdded) => {
+  const collectionRef = firestore.collection(collectionKey);
+  const batch = firestore.batch();
+  ObjectsAdded.map((obj) => {
+    const newObjRef = collectionRef.doc();
+    return batch.set(newObjRef, obj);
+  });
+
+  return await batch.commit();
+};
+
+export const shopDataFromSnapshot =  (snapshot) => {
+  
+   const transformedCollections =   snapshot.docs.map((doc) => {
+      const { items, title } = doc.data();
+      
+      
+  
+      return {
+        routeName: encodeURI(title.toLowerCase()),
+        id: doc.id,
+        items,
+        title,
+      };
+    });
+
+    
+
+    
+
+    return transformedCollections.reduce((accumulator, collection)=>{
+      accumulator[collection.title.toLowerCase()] = collection
+      return accumulator
+    },{})
+
+    
+
+  
+  
+};
+
+
+
 export default firebase;
