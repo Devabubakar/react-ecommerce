@@ -6,6 +6,7 @@ import CollectionPreview from '../collections/collections.preview.component';
 import { Collectionoverview } from './category.styles';
 
 const Category = ({ collection }) => {
+  
   return (
     <Collectionoverview>
       <CollectionPreview collection={collection} />

@@ -1,5 +1,5 @@
 import { createSelector } from 'reselect';
-import memoize from 'lodash.memoize';
+
 
 export const shopSelector = (state) => state.shop;
 
@@ -13,11 +13,11 @@ export const collectionObject = createSelector(
   (collections) =>
     collections ? Object.keys(collections).map((key) => collections[key]) : []
 )
-
-export const categoryCollections = memoize((categoryUrlParams) =>
-  createSelector([selectCollections], (collections) =>
-    collections ? collections[categoryUrlParams] : []
-  ))
+export const categoryCollections = collectionUrlParam =>
+  createSelector(
+    [selectCollections],
+    collections => (collections ? collections[collectionUrlParam] : null)
+  );
 
 export const collectionFetching = createSelector(
   [shopSelector],
