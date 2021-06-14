@@ -7,6 +7,7 @@ const INTIAL_STATE = {
 const userReducer = (state = INTIAL_STATE, action) => {
   switch (action.type) {
     case userTypes.GOOGLE_SIGNIN_SUCCESS:
+    case userTypes.EMAIL_SIGNIN_SUCCESS :
       return {
         ...state,
         currentUser: action.payload,
