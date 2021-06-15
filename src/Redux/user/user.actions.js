@@ -5,7 +5,7 @@ export const setCurrentUser = (user) => ({
 });
 
 export const checkUserSession = () => ({
-  type: userTypes.CHECK_USER_SESSION
+  type: userTypes.CHECK_USER_SESSION,
 });
 
 export const googleSignInStart = () => ({
@@ -22,5 +22,16 @@ export const signInSuccess = (user) => ({
 });
 export const signInFailure = (error) => ({
   type: userTypes.SIGNIN_FAILURE,
+  payload: error,
+});
+
+export const signOutStart = () => ({
+  type: userTypes.SIGN_OUT_START,
+});
+export const signOutSuccess = () => ({
+  type: userTypes.SIGN_OUT_SUCCCESS,
+});
+export const signOutFailure = (error) => ({
+  type: userTypes.SIGN_OUT_FAILURE,
   payload: error,
 });
