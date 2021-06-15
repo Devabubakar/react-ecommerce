@@ -20,6 +20,7 @@ const userReducer = (state = INTIAL_STATE, action) => {
       };
     case userTypes.SIGNIN_FAILURE:
     case userTypes.SIGN_OUT_FAILURE:
+    case userTypes.SIGN_UP_FAILURE:
       return {
         ...state,
         error: action.payload,

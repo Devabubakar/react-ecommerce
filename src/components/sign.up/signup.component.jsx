@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 
-
 import FormInput from '../form.input/form.input.component';
-import { auth, createUserProfileDocument } from '../../firebase/firebase.utils';
 import Button from '../button/button.component';
 import { SignUpContainer, SignUpTitle } from './signup.styles';
+import { connect } from 'react-redux';
+import { signUpStart } from '../../redux/user/user.actions';
 
 export class Signup extends Component {
   constructor() {
@@ -22,31 +22,32 @@ export class Signup extends Component {
     if (this.state.password !== this.state.passwordConfirm) {
       alert('Password Do Not match');
       return;
-      
     }
-    try {
-      
-      const { user } = await auth.createUserWithEmailAndPassword(
-        this.state.email,
-        this.state.password
-      );
-      
-      const {displayName} = this.state
+    const { email, password, displayName } = this.state;
+    const { signUpStart } = this.props;
+    signUpStart({ email, password, displayName });
+    // try {
 
-      await createUserProfileDocument(user, {displayName});
-      this.setState({
-        displayName: '',
-        email: '',
-        password: '',
-        passwordConfirm: '',
-      });
-    } catch (error) {
-      console.log(error);
-    }
+    //   const { user } = await auth.createUserWithEmailAndPassword(
+    //     this.state.email,
+    //     this.state.password
+    //   );
+
+    //   const {displayName} = this.state
+
+    //   await createUserProfileDocument(user, {displayName});
+    //   this.setState({
+    //     displayName: '',
+    //     email: '',
+    //     password: '',
+    //     passwordConfirm: '',
+    //   });
+    // } catch (error) {
+    //   console.log(error);
+    // }
   };
   handleChange = (e) => {
     const { name, value } = e.target;
-   
 
     this.setState({ [name]: value });
   };
@@ -56,7 +57,7 @@ export class Signup extends Component {
         <SignUpTitle>DON'T HAVE AN ACCOUNT WITH US?</SignUpTitle>
         <span>NO PROBLEM ! JUST SIGN UP WITH US TODAY !!</span>
         <form action='' className='sign-up-form' onSubmit={this.handleSubmit}>
-        <FormInput
+          <FormInput
             type='text'
             name='displayName'
             value={this.state.displayName}
@@ -94,4 +95,9 @@ export class Signup extends Component {
   }
 }
 
-export default Signup;
+const mapDispatchToProps = (dispatch) => ({
+  signUpStart: ({ email, password, displayName }) =>
+    dispatch(signUpStart({ email, password, displayName })),
+});
+
+export default connect(null, mapDispatchToProps)(Signup);

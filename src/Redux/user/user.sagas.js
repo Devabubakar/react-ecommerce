@@ -11,11 +11,17 @@ import {
   signInSuccess,
   signOutFailure,
   signOutSuccess,
+  signUpFailure,
+  signUpSuccess,
 } from './user.actions';
 
-export function* getUserSnapshot(userAuth) {
+export function* getUserSnapshot(userAuth, additionaldata) {
   try {
-    const userRef = yield call(createUserProfileDocument, userAuth);
+    const userRef = yield call(
+      createUserProfileDocument,
+      userAuth,
+      additionaldata
+    );
     const snapshot = yield userRef.get();
     yield put(signInSuccess({ id: snapshot.id, ...snapshot.data() }));
   } catch (error) {
@@ -80,11 +86,50 @@ export function* onSignOut() {
   yield takeLatest(userTypes.SIGN_OUT_START, signOut);
 }
 
+// sign up
+
+export function* signUp({ payload: { email, password, displayName } }) {
+  try {
+    const { user } = yield auth.createUserWithEmailAndPassword(email, password);
+    yield put(signUpSuccess({ user, displayName }));
+  } catch (error) {
+    yield put(signUpFailure(error));
+  }
+}
+
+export function* onSignUp() {
+  yield takeLatest(userTypes.SIGN_UP_START, signUp);
+}
+
+export function* signInAfterSignUp({ payload: { user, displayName } }) {
+  yield getUserSnapshot(user, displayName);
+}
+export function* onSignInAfterSignUp() {
+  yield takeLatest(userTypes.SIGN_UP_SUCCCESS, signInAfterSignUp);
+}
+
 export function* usersagas() {
   yield all([
     call(onGoogleSignIn),
     call(onEmailSignIn),
     call(onCheckUserSession),
     call(onSignOut),
+    call(onSignUp),
+    call(onSignInAfterSignUp),
   ]);
 }
+
+// //const { user } = await auth.createUserWithEmailAndPassword(
+//   this.state.email,
+//   this.state.password
+// );
+
+// const {displayName} = this.state
+
+// await createUserProfileDocument(user, {displayName});
+// this.setState({
+//   displayName: '',
+//   email: '',
+//   password: '',
+//   passwordConfirm: '',
+// });
