@@ -1,4 +1,4 @@
-import './App.css';
+
 import Homepage from './pages/homepage.component/homepage';
 import { Route, Switch, Redirect } from 'react-router-dom';
 import Shop from './pages/shop.component/shop';
@@ -15,15 +15,17 @@ import { collectionObject } from './redux/shop/shop.selectors';
 import { createStructuredSelector } from 'reselect';
 import { currentUserSelector } from './redux/user/user.selector';
 import { checkUserSession } from './redux/user/user.actions';
+import GlobalStyles from './global.styles/globals.styles';
 
 class App extends React.Component {
-  componentDidMount(){
-    const {checkUserSession} = this.props
-    checkUserSession()
+  componentDidMount() {
+    const { checkUserSession } = this.props;
+    checkUserSession();
   }
   render() {
     return (
       <div>
+        <GlobalStyles />
         <Header />
         <Switch>
           <Route exact path='/' component={Homepage} />

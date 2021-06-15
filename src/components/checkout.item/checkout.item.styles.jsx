@@ -8,9 +8,12 @@ export const CheckoutItemContainer = styled.div`
   padding: 15px 0;
   font-size: 20px;
   align-items: center;
+  @media screen and (max-width: 800px) {
+    font-size: 18px;
+  }
 `;
 
-export const CheckoutItemImageContainer = styled.img`
+export const ImageContainer = styled.div`
   width: 23%;
   padding-right: 15px;
   img {
@@ -19,9 +22,11 @@ export const CheckoutItemImageContainer = styled.img`
   }
 `;
 
-
 export const TextContainer = styled.span`
   width: 23%;
+  @media screen and (max-width: 800px) {
+    width: 22%;
+  }
 `;
 
 export const QuantityContainer = styled(TextContainer)`
@@ -35,6 +40,6 @@ export const QuantityContainer = styled(TextContainer)`
 `;
 
 export const RemoveButtonContainer = styled.div`
-  padding-left: 100px;
+  padding-left: 12px;
   cursor: pointer;
 `;

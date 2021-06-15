@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import Button from '../button/button.component'
+import Button from '../button/button.component';
 
 export const CollectionItemContainer = styled.div`
   width: 22vw;
@@ -17,6 +17,17 @@ export const CollectionItemContainer = styled.div`
       display: flex;
     }
   }
+
+  @media screen and (max-width: 800px) {
+    width: 40vw;
+    &:hover {
+      opacity: unset;
+
+      button {
+        opacity: unset;
+      }
+    }
+  }
 `;
 
 export const AddButton = styled(Button)`
@@ -25,6 +36,13 @@ export const AddButton = styled(Button)`
   position: absolute;
   top: 255px;
   display: none;
+
+  @media screen and (max-width: 800px) {
+    display: block;
+    opacity: 0.9;
+    min-width: unset;
+    padding: 0 10px;
+  }
 `;
 
 export const BackgroundImage = styled.div`
@@ -34,6 +52,10 @@ export const BackgroundImage = styled.div`
   background-position: center;
   margin-bottom: 5px;
   background-image: ${({ imageUrl }) => `url(${imageUrl})`};
+
+  @media screen and (max-width) {
+    height: 100%;
+  }
 `;
 
 export const CollectionFooterContainer = styled.div`
@@ -42,6 +64,12 @@ export const CollectionFooterContainer = styled.div`
   display: flex;
   justify-content: space-between;
   font-size: 18px;
+  text-align: center;
+
+  @media screen and (max-width: 800px) {
+    font-size: 14px;
+    font-weight: 500;
+  }
 `;
 
 export const NameContainer = styled.span`
