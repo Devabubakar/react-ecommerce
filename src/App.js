@@ -11,12 +11,16 @@ import CheckOut from './components/checkout/checkout.component';
 
 import React from 'react';
 
-import { collectionObject} from './redux/shop/shop.selectors';
+import { collectionObject } from './redux/shop/shop.selectors';
 import { createStructuredSelector } from 'reselect';
 import { currentUserSelector } from './redux/user/user.selector';
+import { checkUserSession } from './redux/user/user.actions';
 
 class App extends React.Component {
- 
+  componentDidMount(){
+    const {checkUserSession} = this.props
+    checkUserSession()
+  }
   render() {
     return (
       <div>
@@ -41,9 +45,11 @@ class App extends React.Component {
 
 const mapStateToProps = createStructuredSelector({
   currentUser: currentUserSelector,
-  collectionArray: collectionObject
+  collectionArray: collectionObject,
 });
 
+const mapDispatchToProps = (dispatch) => ({
+  checkUserSession: () => dispatch(checkUserSession()),
+});
 
-
-export default connect(mapStateToProps)(App);
+export default connect(mapStateToProps, mapDispatchToProps)(App);

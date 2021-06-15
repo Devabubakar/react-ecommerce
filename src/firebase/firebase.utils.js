@@ -56,36 +56,32 @@ export const addCollectionAndDocument = async (collectionKey, ObjectsAdded) => {
   return await batch.commit();
 };
 
-export const shopDataFromSnapshot =  (snapshot) => {
-  
-   const transformedCollections =   snapshot.docs.map((doc) => {
-      const { items, title } = doc.data();
-      
-      
-  
-      return {
-        routeName: encodeURI(title.toLowerCase()),
-        id: doc.id,
-        items,
-        title,
-      };
-    });
+export const shopDataFromSnapshot = (snapshot) => {
+  const transformedCollections = snapshot.docs.map((doc) => {
+    const { items, title } = doc.data();
 
-    
+    return {
+      routeName: encodeURI(title.toLowerCase()),
+      id: doc.id,
+      items,
+      title,
+    };
+  });
 
-    
-
-    return transformedCollections.reduce((accumulator, collection)=>{
-      accumulator[collection.title.toLowerCase()] = collection
-      return accumulator
-    },{})
-
-    
-
-  
-  
+  return transformedCollections.reduce((accumulator, collection) => {
+    accumulator[collection.title.toLowerCase()] = collection;
+    return accumulator;
+  }, {});
 };
 
-
+//gets current User in persistance
+export const getCurrentUser = () => {
+  return new Promise((resolve, reject) => {
+    const unsubscribe = auth.onAuthStateChanged((userAuth) => {
+      unsubscribe();
+      resolve(userAuth);
+    }, reject);
+  });
+};
 
 export default firebase;
