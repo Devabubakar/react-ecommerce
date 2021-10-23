@@ -26,25 +26,7 @@ export class Signup extends Component {
     const { email, password, displayName } = this.state;
     const { signUpStart } = this.props;
     signUpStart({ email, password, displayName });
-    // try {
-
-    //   const { user } = await auth.createUserWithEmailAndPassword(
-    //     this.state.email,
-    //     this.state.password
-    //   );
-
-    //   const {displayName} = this.state
-
-    //   await createUserProfileDocument(user, {displayName});
-    //   this.setState({
-    //     displayName: '',
-    //     email: '',
-    //     password: '',
-    //     passwordConfirm: '',
-    //   });
-    // } catch (error) {
-    //   console.log(error);
-    // }
+    
   };
   handleChange = (e) => {
     const { name, value } = e.target;
