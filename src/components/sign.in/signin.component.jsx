@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 import FormInput from '../form.input/form.input.component';
 import CustomButton from '../button/button.component';
-import { connect, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 
 import {
   SignInContainer,
