@@ -4,22 +4,22 @@ import Shop from './pages/shop.component/shop';
 import Header from './components/header/header.component';
 import Authentication from './components/signup.signin/signup.signin.component';
 
-import { connect } from 'react-redux';
+import { connect, useDispatch, useSelector } from 'react-redux';
 
 import CheckOut from './components/checkout/checkout.component';
 
 import React, { useEffect } from 'react';
 
-import { collectionObject } from './redux/shop/shop.selectors';
-import { createStructuredSelector } from 'reselect';
-import { currentUserSelector } from './redux/user/user.selector';
 import { checkUserSession } from './redux/user/user.actions';
 import GlobalStyles from './global.styles/globals.styles';
 
-const App = ({ checkUserSession }) => {
+const App = () => {
+  const dispatch = useDispatch();
+  const currentUser = useSelector((state) => state.currentUser);
+
   useEffect(() => {
-    checkUserSession();
-  }, [checkUserSession]);
+    dispatch(checkUserSession());
+  }, [dispatch]);
 
   return (
     <div>
@@ -33,7 +33,7 @@ const App = ({ checkUserSession }) => {
           exact
           path='/signin'
           render={() =>
-            this.props.currentUser ? <Redirect to='/' /> : <Authentication />
+            currentUser ? <Redirect to='/' /> : <Authentication />
           }
         />
         <Route exact path='/checkout' component={CheckOut} />
@@ -42,13 +42,4 @@ const App = ({ checkUserSession }) => {
   );
 };
 
-const mapStateToProps = createStructuredSelector({
-  currentUser: currentUserSelector,
-  collectionArray: collectionObject,
-});
-
-const mapDispatchToProps = (dispatch) => ({
-  checkUserSession: () => dispatch(checkUserSession()),
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default App;
