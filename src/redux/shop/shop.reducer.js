@@ -5,6 +5,8 @@ const INITIAL_STATE = {
   isFetching: false,
 };
 
+export const shopInitialState =  INITIAL_STATE
+
 const shopReducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
     case shopTypes.FETCH_COLLECTIONS_STARTS:
