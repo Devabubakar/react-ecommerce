@@ -7,13 +7,12 @@ import { cartItemCount } from '../../redux/cart/cart.selector';
 import { CartCount, CartIconContainer } from './cart.styles';
 
 const Cart = () => {
-  
   const dispatch = useDispatch();
 
   const countItem = useSelector(cartItemCount);
 
   return (
-    <CartIconContainer onClick={() => dispatch(toggleCart)}>
+    <CartIconContainer onClick={() => dispatch(toggleCart())}>
       <CartIcon />
       <CartCount>{countItem}</CartCount>
     </CartIconContainer>
