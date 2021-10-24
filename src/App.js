@@ -4,7 +4,7 @@ import Shop from './pages/shop.component/shop';
 import Header from './components/header/header.component';
 import Authentication from './components/signup.signin/signup.signin.component';
 
-import { connect, useDispatch, useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import CheckOut from './components/checkout/checkout.component';
 
