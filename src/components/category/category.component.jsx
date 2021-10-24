@@ -17,6 +17,4 @@ const mapStateToProps = (state, ownProps) => ({
   collection: categoryCollections(ownProps.match.params.category)(state),
 });
 
-
-
 export default connect(mapStateToProps)(Category);
