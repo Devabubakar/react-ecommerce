@@ -1,11 +1,15 @@
 import React from 'react';
-import { connect } from 'react-redux';
+import { useSelector } from 'react-redux';
+import { useParams } from 'react-router-dom';
 
 import { categoryCollections } from '../../redux/shop/shop.selectors';
 import CollectionPreview from '../collections/collections.preview.component';
 import { Collectionoverview } from './category.styles';
 
-const Category = ({ collection }) => {
+const Category = () => {
+  const { category } = useParams();
+  const collection = useSelector(categoryCollections(category));
+
   return (
     <Collectionoverview>
       <CollectionPreview collection={collection} />
@@ -13,8 +17,4 @@ const Category = ({ collection }) => {
   );
 };
 
-const mapStateToProps = (state, ownProps) => ({
-  collection: categoryCollections(ownProps.match.params.category)(state),
-});
-
-export default connect(mapStateToProps)(Category);
+export default Category;
