@@ -13,4 +13,3 @@ const StripeButton = () => {
 };
 
 export default StripeButton;
-ç
