@@ -1,7 +1,29 @@
-const stripe = require('stripe')('sk_test_51IkrCxBBmwstr0BYPyKXlDzYYaWn3TvXeCbclOtlqCLNU09t2ZTw0h470yfvO0WlkO3GgSa2wRuyOzKjf7eN1Q8v001PDiXXIr');
 const express = require('express');
+const bodyParser = require('body-parser');
+const path = require('path');
+
+if (process.env.NODE_ENV !== 'production') require('dotenv').config();
+
+const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
+
 const app = express();
-app.use(express.static('public'));
+const port = process.env.PORT || 5000;
+
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static(path.join(__dirname, 'client/build')));
+
+  app.get('*', function(req, res) {
+    res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
+  });
+}
+
+app.listen(port, error => {
+  if (error) throw error;
+  console.log('Server running on port ' + port);
+});
 
 const YOUR_DOMAIN = 'http://localhost:3000/checkout';
 
@@ -24,4 +46,3 @@ app.post('/create-checkout-session', async (req, res) => {
   res.redirect(303, session.url)
 });
 
-app.listen(process.env.PORT || 4242, () => console.log('Running on port 4242'));
