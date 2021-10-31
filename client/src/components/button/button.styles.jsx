@@ -16,21 +16,29 @@ export const googleStyle = css`
 `;
 
 export const invertedStyle = css`
-background-color: white;
-    color: black;
-    border: 1px solid black;
+  background-color: white;
+  color: black;
+  border: 1px solid black;
 
-    &:hover {
-      background-color: black;
-      color: white;
-      border: none;
-    }
+  &:hover {
+    background-color: black;
+    color: white;
+    border: none;
   }
+`;
+
+export const stripeStyle = css`
+  background-color: #357ae8;
+  margin: 0 auto;
+  padding: 0 8px 0 8px;
 `;
 
 const getButtonStyles = (props) => {
   if (props.isGoogleSignIn) {
     return googleStyle;
+  }
+  if (props.stripe) {
+    return stripeStyle;
   }
 
   return props.inverted ? invertedStyle : buttonStyle;
