@@ -1,5 +1,6 @@
 import React from 'react';
 import CustomButton from '../button/button.component';
+import WithSpinner from '../with.spinner/with.spinner.component';
 
 
 const StripeButton = () => {
@@ -12,4 +13,4 @@ const StripeButton = () => {
   );
 };
 
-export default StripeButton;
+export default WithSpinner(StripeButton);
