@@ -28,7 +28,8 @@ export default class ErrorBoundary extends Component {
           <ErrorImageText>Something went very wrong 😞😞</ErrorImageText>
         </ErrorImageOverlay>
       );
+    } else {
+      return this.props.children;
     }
-    return this.props.children;
   }
 }
