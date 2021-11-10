@@ -1,26 +1,26 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const path = require('path');
-
+const compression = require('compression');
 if (process.env.NODE_ENV !== 'production') require('dotenv').config();
 
 const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
 
 const app = express();
 const port = process.env.PORT || 5000;
-
+app.use(compression);
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 if (process.env.NODE_ENV === 'production') {
   app.use(express.static(path.join(__dirname, 'client/build')));
 
-  app.get('*', function(req, res) {
+  app.get('*', function (req, res) {
     res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
   });
 }
 
-app.listen(port, error => {
+app.listen(port, (error) => {
   if (error) throw error;
   console.log('Server running on port ' + port);
 });
@@ -35,14 +35,11 @@ app.post('/create-checkout-session', async (req, res) => {
         quantity: 1,
       },
     ],
-    payment_method_types: [
-      'card',
-    ],
+    payment_method_types: ['card'],
     mode: 'payment',
     success_url: `${YOUR_DOMAIN}?success=true`,
     cancel_url: `${YOUR_DOMAIN}?canceled=true`,
   });
 
-  res.redirect(303, session.url)
+  res.redirect(303, session.url);
 });
-
