@@ -4,7 +4,9 @@ export const setCurrentUser = (user) => ({
   payload: user,
 });
 
-
+export const checkUserSession = () => ({
+  type: userTypes.CHECK_USER_SESSION,
+});
 
 export const googleSignInStart = () => ({
   type: userTypes.GOOGLE_SIGNIN_START,

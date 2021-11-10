@@ -1,17 +1,21 @@
-import Homepage from './pages/homepage.component/homepage';
 import { Route, Switch, Redirect } from 'react-router-dom';
-import Shop from './pages/shop.component/shop';
 import Header from './components/header/header.component';
-import Authentication from './components/signup.signin/signup.signin.component';
-
 import { useDispatch, useSelector } from 'react-redux';
+import Spinner from './components/spinner/spinner.component';
+import ErrorBoundary from './components/error.boundaries/error-boundaries.component';
 
-import CheckOut from './components/checkout/checkout.component';
-
-import React, { useEffect } from 'react';
+import React, { useEffect, lazy, Suspense } from 'react';
 
 import { checkUserSession } from './redux/user/user.actions';
 import GlobalStyles from './global.styles/globals.styles';
+
+const Homepage = lazy(() => import('./pages/homepage.component/homepage'));
+
+const Shop = lazy(() => import('./pages/shop.component/shop'));
+const CheckOut = lazy(() => import('./components/checkout/checkout.component'));
+const Authentication = lazy(() =>
+  import('./components/signup.signin/signup.signin.component')
+);
 
 const App = () => {
   const dispatch = useDispatch();
@@ -26,17 +30,21 @@ const App = () => {
       <GlobalStyles />
       <Header />
       <Switch>
-        <Route exact path='/' component={Homepage} />
-        <Route path='/shop' component={Shop} />
+        <ErrorBoundary>
+          <Suspense fallback={<Spinner />}>
+            <Route exact path='/' component={Homepage} />
+            <Route path='/shop' component={Shop} />
 
-        <Route
-          exact
-          path='/signin'
-          render={() =>
-            currentUser ? <Redirect to='/' /> : <Authentication />
-          }
-        />
-        <Route exact path='/checkout' component={CheckOut} />
+            <Route
+              exact
+              path='/signin'
+              render={() =>
+                currentUser ? <Redirect to='/' /> : <Authentication />
+              }
+            />
+            <Route exact path='/checkout' component={CheckOut} />
+          </Suspense>
+        </ErrorBoundary>
       </Switch>
     </div>
   );
