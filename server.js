@@ -16,14 +16,16 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 
 if (process.env.NODE_ENV === 'production') {
-  app.use(express.static(path.join(__dirname, 'client/build')));
-  app.use(compression());
   app.use(enforce.HTTPS({ trustProtoHeader: true }));
+  app.use(compression());
+  app.use(express.static(path.join(__dirname, 'client/build')));
 
   app.get('*', function (req, res) {
     res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
   });
- 
+  app.get('/service-worker.js', (req, res) => {
+    res.sendFile(path.resolve(__dirname, '..', 'build', 'service-worker.js'));
+  });
 }
 
 app.listen(port, (error) => {
@@ -32,10 +34,6 @@ app.listen(port, (error) => {
 });
 
 const YOUR_DOMAIN = 'http://localhost:3000/checkout';
-
-app.get('/service-worker.js', (req, res) => {
-  res.sendFile(path.resolve(__dirname, '..', 'build', 'service-worker.js'));
-});
 
 app.post('/create-checkout-session', async (req, res) => {
   const session = await stripe.checkout.sessions.create({

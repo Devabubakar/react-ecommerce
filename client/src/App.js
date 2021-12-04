@@ -8,7 +8,7 @@ import React, { useEffect, lazy, Suspense } from 'react';
 import { checkUserSession } from './redux/user/user.actions';
 import GlobalStyles from './global.styles/globals.styles';
 
-const Header = lazy(() => import('./components/header/header.component'))
+const Header = lazy(() => import('./components/header/header.component'));
 const Homepage = lazy(() => import('./pages/homepage.component/homepage'));
 
 const Shop = lazy(() => import('./pages/shop.component/shop'));
@@ -28,10 +28,10 @@ const App = () => {
   return (
     <div>
       <GlobalStyles />
-      <Header />
       <Switch>
         <ErrorBoundary>
           <Suspense fallback={<Spinner />}>
+            <Header />
             <Route exact path='/' component={Homepage} />
             <Route path='/shop' component={Shop} />
 
