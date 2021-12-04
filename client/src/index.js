@@ -7,7 +7,7 @@ import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { store, persistor } from './redux/store';
 import { PersistGate } from 'redux-persist/integration/react';
-import * as serviceWorkerRegistration from './serviceWorkerRegistration';
+import * as serviceWorker from './service-worker';
 
 ReactDOM.render(
   <React.StrictMode>
@@ -22,4 +22,4 @@ ReactDOM.render(
   document.getElementById('root')
 );
 
-serviceWorkerRegistration.register();
+serviceWorker.register();
