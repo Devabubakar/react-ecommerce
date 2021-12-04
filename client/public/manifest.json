@@ -1,25 +1,27 @@
 {
-  "short_name": "Ecommerce",
-  "name": "Ecommerce site by Abubakar Ali",
+  "name": "React Ecommerce",
+  "short_name": "Ecommerce site by Abubakar Ali",
+  "start_url": ".",
+  "background_color": "white",
+  "theme_color": "black",
+  "display": "standalone",
+  "prefer_related_applications": "false",
   "icons": [
     {
-      "src": "favicon.ico",
-      "sizes": "64x64 32x32 24x24 16x16",
-      "type": "image/x-icon"
+      "src": "crwn-512x512.png",
+      "sizes": "512x512",
+      "type": "images/png"
     },
     {
-      "src": "./crwn-512x512.png",
-      "size": "512x512",
-      "type": "image/png"
+      "src": "crwn-192x192.png",
+      "sizes": "192x192",
+      "type": "images/png"
     },
     {
-      "src": "./crwn-192x192.png",
-      "size": "192x192",
-      "type": "image/png"
+      "src": "crwn-512x512.png",
+      "sizes": "512x512",
+      "type": "images/png",
+      "purpose": "maskable"
     }
-  ],
-  "start_url": ".",
-  "display": "standalone",
-  "theme_color": "#000000",
-  "background_color": "#ffffff"
+  ]
 }
