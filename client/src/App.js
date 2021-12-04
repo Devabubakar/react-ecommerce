@@ -1,5 +1,5 @@
 import { Route, Switch, Redirect } from 'react-router-dom';
-import Header from './components/header/header.component';
+
 import { useDispatch, useSelector } from 'react-redux';
 import Spinner from './components/spinner/spinner.component';
 import ErrorBoundary from './components/error.boundaries/error-boundaries.component';
@@ -10,7 +10,7 @@ import { checkUserSession } from './redux/user/user.actions';
 import GlobalStyles from './global.styles/globals.styles';
 
 const Homepage = lazy(() => import('./pages/homepage.component/homepage'));
-
+const Header = lazy(() => import('./components/header/header.component'));
 const Shop = lazy(() => import('./pages/shop.component/shop'));
 const CheckOut = lazy(() => import('./components/checkout/checkout.component'));
 const Authentication = lazy(() =>
@@ -28,10 +28,11 @@ const App = () => {
   return (
     <div>
       <GlobalStyles />
-      <Header />
+
       <Switch>
         <ErrorBoundary>
           <Suspense fallback={<Spinner />}>
+            <Header />
             <Route exact path='/' component={Homepage} />
             <Route path='/shop' component={Shop} />
 
