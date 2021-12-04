@@ -1,8 +1,20 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "React Ecommerce",
+  "name": "Ecommerce",
   "start_url": ".",
   "display": "standalone",
   "theme_color": "#000000",
-  "background_color": "#ffffff"
+  "background_color": "#ffffff",
+  "icons": [
+    {
+      "src": "crwn-192x192.png",
+      "size": "192*192",
+      "type": "image/png"
+    },
+    {
+      "src": "crwn-512x512.png",
+      "size": "512*512",
+      "type": "image/png"
+    }
+  ]
 }
