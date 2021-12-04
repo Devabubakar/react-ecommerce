@@ -15,7 +15,16 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static(path.join(__dirname, 'client/build')));
+  app.use(compression());
+  app.use(enforce.HTTPS({ trustProtoHeader: true }));
 
+  app.get('*', function (req, res) {
+    res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
+  });
+ 
+}
 
 app.listen(port, (error) => {
   if (error) throw error;
@@ -44,13 +53,3 @@ app.post('/create-checkout-session', async (req, res) => {
 
   res.redirect(303, session.url);
 });
-
-if (process.env.NODE_ENV === 'production') {
-  app.use(compression);
-  app.use(enforce.HTTPS({ trustProtoHeader: true }));
-  app.use(express.static(path.join(__dirname, 'client/build')));
- 
-  app.get('*', function(req, res) {
-    res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
-  });
-}
