@@ -1,3 +1,4 @@
+
 import { Route, Switch, Redirect } from 'react-router-dom';
 
 import { useDispatch, useSelector } from 'react-redux';
@@ -39,9 +40,7 @@ const App = () => {
             <Route
               exact
               path='/signin'
-              render={() =>
-                currentUser ? <Redirect to='/' /> : <Authentication />
-              }
+              component={Authentication}
             />
             <Route exact path='/checkout' component={CheckOut} />
           </Suspense>

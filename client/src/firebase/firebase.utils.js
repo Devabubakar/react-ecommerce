@@ -12,6 +12,11 @@ const config = {
   measurementId: 'G-LKWEK27NR6',
 };
 
+
+
+
+
+
 firebase.initializeApp(config);
 
 export const auth = new firebase.auth();
